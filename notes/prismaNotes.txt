@@ -1,0 +1,6 @@
+$ npm install prisma
+
+$ npx prisma init --datasource-provider sqlite
+
+$ npx prisma migrate dev
+    -- Name of Migration: init
