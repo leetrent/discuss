@@ -1,0 +1,17 @@
+https://github.com/settings/applications/new
+
+# Application Name:
+DEV Discuss
+
+Hompage URL:
+http://localhost:3000
+
+Authorization Callback URL:
+http://localhost:3000/api/auth/callback/github
+
+Client ID:
+a26a46da7d1b2c39ba3c
+
+Client Secret:
+3fdc20624a499e3d531b6fb1b94f4ba72ff7b74d
+
