@@ -1,3 +1,5 @@
+'use client';
+import { useFormState } from 'react-dom';
 import {
     Input,
     Button,
@@ -9,21 +11,34 @@ import {
 import * as actions from '@/actions';
 
 export default function TopicCreateForm() {
+    const [formstate, action] = useFormState(actions.createTopic, {
+        errors: {}
+    });
     return (
         <Popover placement='left'>
             <PopoverTrigger>
                 <Button color="primary">Create a Topic</Button>
             </PopoverTrigger>
             <PopoverContent>
-                <form action={actions.createTopic}>
+                <form action={action}>
                     <div className='flex flex-col gap-4 p-4 w-80'>
                         <h3 className="text-lg">Create a Topic</h3>
-                        <Input name="name" label="Name" labelPlacement="outside" placeholder="Name"/>
+                        <Input 
+                            name="name" 
+                            label="Name" 
+                            labelPlacement="outside" 
+                            placeholder="Name"
+                            isInvalid={!!formstate.errors.name}
+                            errorMessage={formstate.errors.name?.join(', ')}
+                        />
                         <Textarea
                             name="description"
                             label="Description"
                             labelPlacement="outside"
-                            placeholder="Describe you topic" />
+                            placeholder="Describe you topic" 
+                            isInvalid={!!formstate.errors.description}
+                            errorMessage={formstate.errors.description?.join(', ')}
+                        />
                         <Button type="submit">Submit</Button>
                     </div>
                 </form>
